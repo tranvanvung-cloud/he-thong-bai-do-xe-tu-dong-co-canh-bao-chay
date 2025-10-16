@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "author": "Bùi Trung Kiên",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -3, "left": -381.2, "attrs": {} },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -204.8,
+      "left": 15.2,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 233.1, "left": -300.2, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -190.5,
+      "left": -320.9,
+      "attrs": { "distance": "2" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 276.4, "left": 86.4, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -189.6,
+      "left": -142.2,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 67.4, "left": 393.6, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic2", "top": -190.5, "left": 696.7, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic3",
+      "top": -190.5,
+      "left": 408.7,
+      "attrs": { "distance": "400" }
+    }
+  ],
+  "connections": [
+    [ "ultrasonic1:VCC", "bb1:tp.2", "red", [ "v86.4", "h-86.4" ] ],
+    [ "ultrasonic1:GND", "bb1:tn.12", "black", [ "v0" ] ],
+    [ "uno:GND.1", "bb1:tn.13", "black", [ "v-47.4", "h-326.7" ] ],
+    [ "uno:5V", "bb1:bp.25", "red", [ "v29.3", "h-236.8" ] ],
+    [ "gas1:VCC", "bb1:bp.23", "red", [ "h67.2", "v-96.9" ] ],
+    [ "gas1:GND", "bb1:bn.20", "black", [ "h0" ] ],
+    [ "uno:GND.2", "bb1:bn.25", "black", [ "v48.5", "h-246.3" ] ],
+    [ "bb1:tp.1", "bb1:bp.1", "red", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "bb1:13t.a", "green", [ "v0" ] ],
+    [ "uno:7", "bb1:13t.b", "green", [ "v-28.2", "h-419.4", "v326.4" ] ],
+    [ "ultrasonic1:ECHO", "bb1:4t.a", "gold", [ "v28.8", "h-96.8" ] ],
+    [ "uno:6", "bb1:4t.b", "gold", [ "v-37.8", "h-515.3", "v268.8" ] ],
+    [ "servo1:V+", "bb1:bp.2", "red", [ "h0" ] ],
+    [ "servo1:GND", "bb1:bn.22", "black", [ "h0" ] ],
+    [ "servo1:PWM", "bb1:30t.b", "blue", [ "h-144", "v-287.8" ] ],
+    [ "uno:9", "bb1:30t.a", "blue", [ "v-9", "h-239.8" ] ],
+    [ "gas1:AOUT", "bb1:22b.j", "violet", [ "h0" ] ],
+    [ "uno:A0", "bb1:22b.i", "violet", [ "v58.1", "h-332.8", "v-144" ] ],
+    [ "bz1:1", "bb1:tn.21", "black", [ "v9.6", "h-38.4" ] ],
+    [ "uno:8", "bz1:2", "red", [ "v-66.6", "h-230.6" ] ],
+    [ "relay1:VCC", "uno:5V", "red", [ "h-28.8", "v124.8", "h-204.8" ] ],
+    [ "relay1:GND", "uno:GND.2", "black", [ "h-48", "v124.4", "h-115.2" ] ],
+    [ "relay1:IN", "uno:5", "green", [ "h-38.4", "v-115.4", "h-105.6" ] ],
+    [ "lcd1:GND", "bb1:tn.20", "black", [ "h-28.8", "v163.2", "h-144" ] ],
+    [ "lcd1:VCC", "bb1:tp.19", "red", [ "h-19.2", "v115.3", "h-144" ] ],
+    [ "lcd1:SDA", "bb1:30b.f", "gray", [ "h-38.4", "v0.2" ] ],
+    [ "uno:A4", "bb1:30b.g", "gray", [ "v38.9", "h-322.8" ] ],
+    [ "lcd1:SCL", "bb1:29b.f", "white", [ "h-57.6", "v240.3", "h-48" ] ],
+    [ "uno:A5", "bb1:29b.g", "white", [ "v67.7", "h-341.9" ] ],
+    [ "ultrasonic3:TRIG", "uno:10", "cyan", [ "v48", "h-336.4" ] ],
+    [ "ultrasonic3:ECHO", "uno:11", "cyan", [ "v38.4", "h-356" ] ],
+    [ "ultrasonic2:TRIG", "uno:12", "yellow", [ "v57.6", "h-643.6" ] ],
+    [ "ultrasonic2:ECHO", "uno:13", "yellow", [ "v67.2", "h-663.2" ] ],
+    [ "ultrasonic3:GND", "uno:GND.1", "black", [ "v28.8", "h-394.8" ] ],
+    [ "ultrasonic2:GND", "uno:GND.1", "black", [ "v76.8", "h-682.8" ] ],
+    [ "relay1:COM", "relay1:VCC", "green", [ "h39.6", "v-49.4", "h-163.2" ] ],
+    [ "relay1:NO", "ultrasonic3:VCC", "green", [ "h68.4", "v-117", "h-96" ] ],
+    [ "relay1:NO", "ultrasonic2:VCC", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
